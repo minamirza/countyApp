@@ -63,3 +63,8 @@ function showDetail() {
   });
   showDetail();
 }
+
+function go(arg) {
+  const yeniArr = DATA.filter((item) => item.region == arg);
+  show();
+}
