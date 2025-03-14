@@ -6,10 +6,10 @@ fetch("https://restcountries.com/v3.1/all")
   .then((melumat) => {
     DATA.push(...melumat);
 
-    show();
+    showCard();
   });
 let count = 8;
-function show() {
+function showCard() {
   content.innerHTML = "";
   DATA.slice(0, count).forEach((item) => {
     content.innerHTML += `
@@ -33,9 +33,33 @@ function show() {
         `;
   });
 }
-show();
+showCard();
 function elvaeEt() {
   count += 8;
   console.log(count);
-  show();
+  showCard();
+}
+document.addEventListener("click", function (event) {
+  if (event.target.tagName === "IMG") {
+    window.location.href = "newPage.html";
+  }
+});
+
+// newPageCard
+const newPageCard = document.getElementById("newPageCard");
+function showDetail() {
+  newPageCard.innerHTML = "";
+  DATA.slice(0, count).forEach((item) => {
+    newPageCard.innerHTML += `
+  <div class="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
+	<img src="https://source.unsplash.com/random/300x300/?1" alt="" class="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500">
+	<div class="mt-6 mb-2">
+		<span class="block text-xs font-medium tracking-widest uppercase dark:text-violet-600">Quisque</span>
+		<h2 class="text-xl font-semibold tracking-wide">Nam maximus purus</h2>
+	</div>
+	<p class="dark:text-gray-800">Mauris et lorem at elit tristique dignissim et ullamcorper elit. In sed feugiat mi. Etiam ut lacinia dui.</p>
+</div>
+    `;
+  });
+  showDetail();
 }
